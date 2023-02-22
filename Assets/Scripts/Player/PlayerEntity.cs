@@ -25,11 +25,13 @@ namespace Player
             _rigidbody.MovePosition(_rigidbody.position + direction * _moveSpeed * Time.fixedDeltaTime);
         }
 
-        public void AnimatorPlayer(Vector2 direction)
+        public void AnimatorPlayer(Vector2 direction, Vector2 lastMove)
         {
             _animator.SetFloat("horizontal", direction.x);
+            _animator.SetFloat("lastMoveX", lastMove.x);
             SetDirection(direction.x);
             _animator.SetFloat("vertical", direction.y);
+            _animator.SetFloat("lastMoveY", lastMove.y);
             _animator.SetFloat("speed", direction.sqrMagnitude);
         }
 

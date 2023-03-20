@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Player
@@ -5,47 +6,30 @@ namespace Player
     public class PlayerEntity : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed;
-        [SerializeField] private Animator _animator;
-        [SerializeField] private bool _faceRight;
-
+        [SerializeField] private float _collisionOffset = 0.05f;
+        [SerializeField] private ContactFilter2D _movementFilter;
+        
+        
         private Rigidbody2D _rigidbody;
-    
+        private List<RaycastHit2D> _castCollisions = new();
+
         void Start()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
         }
-
-        void Update()
-        {
         
-        }
-
         public void MovePlayer(Vector2 direction)
         {
-            _rigidbody.MovePosition(_rigidbody.position + direction * _moveSpeed * Time.fixedDeltaTime);
-        }
-
-        public void AnimatorPlayer(Vector2 direction, Vector2 lastMove)
-        {
-            _animator.SetFloat("horizontal", direction.x);
-            _animator.SetFloat("lastMoveX", lastMove.x);
-            SetDirection(direction.x);
-            _animator.SetFloat("vertical", direction.y);
-            _animator.SetFloat("lastMoveY", lastMove.y);
-            _animator.SetFloat("speed", direction.sqrMagnitude);
-        }
-
-        private void SetDirection(float direction)
-        {
-            if ((_faceRight && direction < 0) ||
-                (!_faceRight && direction > 0))
-                Flip();
-        }
-
-        private void Flip()
-        {
-            transform.Rotate(0,180,0);
-            _faceRight = !_faceRight;
+            int count = _rigidbody.Cast(
+                direction,
+                _movementFilter, 
+                _castCollisions, 
+                _moveSpeed * Time.fixedDeltaTime + _collisionOffset
+                );
+            if (count == 0)
+            {
+                _rigidbody.MovePosition(_rigidbody.position + direction * _moveSpeed * Time.fixedDeltaTime);
+            }
         }
     }
 }

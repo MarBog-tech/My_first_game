@@ -2,10 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c79c8462-5d39-4932-b3c3-e354be5aac61" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/PlayerWalk/Player_attack_back.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/PlayerWalk/Player_attack_back.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/PlayerWalk/Player_attack_front.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/PlayerWalk/Player_attack_front.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/PlayerWalk/Player_attack_side.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Animation/PlayerWalk/Player_attack_side.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Player/PlayerInputActions.inputactions" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Characters/Player/PlayerInputActions.inputactions.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAnimator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAnimator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ProjectSettings/TimelineSettings.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserSettings/Search.settings" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.My project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.My project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Animation/PlayerWalk/Player.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PlayerWalk/Player.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/PlayerWalk/Player_Idle_Back.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PlayerWalk/Player_Idle_Back.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/PlayerWalk/Player_Idle_Front.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PlayerWalk/Player_Idle_Front.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/PlayerWalk/Player_Idle_Side.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/PlayerWalk/Player_Idle_Side.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Characters/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Characters/Player/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/InputReader.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,6 +36,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.4.4/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -30,7 +52,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.environmentSetup&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.environmentSetup&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;rider.external.source.directories&quot;: [
@@ -90,6 +113,14 @@
       <workItem from="1677009731903" duration="6103000" />
       <workItem from="1677086688723" duration="2369000" />
       <workItem from="1677092619105" duration="2516000" />
+      <workItem from="1678819924799" duration="2523000" />
+      <workItem from="1679261182075" duration="3869000" />
+      <workItem from="1679328449449" duration="728000" />
+      <workItem from="1679329785707" duration="1669000" />
+      <workItem from="1679331593210" duration="368000" />
+      <workItem from="1679332580854" duration="968000" />
+      <workItem from="1679333653891" duration="10459000" />
+      <workItem from="1679346294593" duration="143000" />
     </task>
     <servers />
   </component>

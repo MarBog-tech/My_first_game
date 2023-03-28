@@ -6,12 +6,12 @@ namespace Player
     public class PlayerEntity : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed;
-        [SerializeField] private float _collisionOffset = 0.05f;
-        [SerializeField] private ContactFilter2D _movementFilter;
+        [SerializeField] private PlayerAnimator _playerAnimator;
         
-        
+        private Vector2 _lastMove = Vector2.down;
         private Rigidbody2D _rigidbody;
-        private List<RaycastHit2D> _castCollisions = new();
+        
+        private bool _canMove = true;
 
         void Start()
         {
@@ -20,16 +20,35 @@ namespace Player
         
         public void MovePlayer(Vector2 direction)
         {
-            int count = _rigidbody.Cast(
-                direction,
-                _movementFilter, 
-                _castCollisions, 
-                _moveSpeed * Time.fixedDeltaTime + _collisionOffset
-                );
-            if (count == 0)
+            if (_canMove)
             {
-                _rigidbody.MovePosition(_rigidbody.position + direction * _moveSpeed * Time.fixedDeltaTime);
+                if (direction != Vector2.zero)
+                {
+                    _rigidbody.MovePosition(_rigidbody.position + direction * _moveSpeed * Time.fixedDeltaTime);
+                    _playerAnimator.AnimatorPlayer(direction, "horizontal", "vertical", true);
+                    _lastMove = direction;
+                }
+                else
+                {
+                    _playerAnimator.AnimatorPlayer(direction, "horizontal", "vertical", false);
+                    _playerAnimator.AnimatorPlayer(_lastMove, "lastMoveX", "lastMoveY", false);
+                }
             }
+        }
+
+        public void StartAttack()
+        {
+            _playerAnimator.AnimatorAttack(_lastMove, "lastMoveX", "lastMoveY");
+        }
+        
+        void LockMovement()
+        {
+            _canMove = false;
+        }
+    
+        void UnLockMovement()
+        {
+            _canMove = true;
         }
     }
 }

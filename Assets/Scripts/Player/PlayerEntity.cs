@@ -1,54 +1,30 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using Animation;
+using Core.Movement.Data;
+using Movement.Controller;
+using StatsSystem.Interfaces;
 
 namespace Player
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerEntity : MonoBehaviour
     {
-        [SerializeField] private float _moveSpeed;
-        [SerializeField] private PlayerAnimator _playerAnimator;
-        
-        private Vector2 _lastMove = Vector2.down;
+        [SerializeField] private DirectionalMoverData _directionalMoverData;
         private Rigidbody2D _rigidbody;
-        
-        private bool _canMove = true;
+        private DirectionalMover _directionalMover;
 
-        void Start()
+        public void Initialize(IStatValueGiver statValueGiver)
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-        }
-        
-        public void MovePlayer(Vector2 direction)
-        {
-            if (_canMove)
-            {
-                if (direction != Vector2.zero)
-                {
-                    _rigidbody.MovePosition(_rigidbody.position + direction * _moveSpeed * Time.fixedDeltaTime);
-                    _playerAnimator.AnimatorPlayer(direction, "horizontal", "vertical", true);
-                    _lastMove = direction;
-                }
-                else
-                {
-                    _playerAnimator.AnimatorPlayer(direction, "horizontal", "vertical", false);
-                    _playerAnimator.AnimatorPlayer(_lastMove, "lastMoveX", "lastMoveY", false);
-                }
-            }
+            _directionalMover = new DirectionalMover(_rigidbody,_directionalMoverData, statValueGiver);
         }
 
-        public void StartAttack()
+        public void Move(Vector2 direction) => _directionalMover.Move(direction);
+
+        public void StartAttack(Vector2 direction)
         {
-            _playerAnimator.AnimatorAttack(_lastMove, "lastMoveX", "lastMoveY");
-        }
-        
-        void LockMovement()
-        {
-            _canMove = false;
-        }
-    
-        void UnLockMovement()
-        {
-            _canMove = true;
+            _directionalMoverData.Animation.AnimationAttack( direction, "lastMoveX", "lastMoveY");
         }
     }
 }

@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Player.Interfaces;
+using Core.Services.ProjectUpdater;
+using InputReader;
 using UnityEngine;
 
 namespace Player
 {
-    public class PlayerBrain
+    public class PlayerBrain : IDisposable
     {
         private readonly PlayerEntity _playerEntity;
         private readonly List<IEntityInputSource> _inputSources;
@@ -17,18 +18,20 @@ namespace Player
         {
             _playerEntity = playerEntity;
             _inputSources = inputSources;
+            ProjectUpdater.Instance.FixedUpdateCalled += OnFixedUpdate;
         }
 
-        // public PlayerBrain()
-        public void OnFixedUpdate()
+        public void Dispose() => ProjectUpdater.Instance.FixedUpdateCalled -= OnFixedUpdate;
+        
+        private void OnFixedUpdate()
         {
             _direction.x = GetHorizontalDirection();
             _direction.y = GetVerticalDirection();
-            _playerEntity.MovePlayer(_direction);
+            _playerEntity.Move(_direction);
             
 
             if (IsAttack)
-                _playerEntity.StartAttack();
+                _playerEntity.StartAttack(_direction);
 
             foreach (var inputSource in _inputSources)
             {
@@ -36,7 +39,7 @@ namespace Player
             }
         }
 
-        public float GetHorizontalDirection()
+        private float GetHorizontalDirection()
         {
             foreach (var inputSource in _inputSources)
             {
@@ -47,8 +50,8 @@ namespace Player
 
             return 0;
         }
-        
-        public float GetVerticalDirection()
+
+        private float GetVerticalDirection()
         {
             foreach (var inputSource in _inputSources)
             {
@@ -61,5 +64,6 @@ namespace Player
         }
 
         private bool IsAttack => _inputSources.Any(source => source.Attack);
+        
     }
 }
